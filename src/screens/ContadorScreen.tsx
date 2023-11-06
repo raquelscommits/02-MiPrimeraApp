@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from '../styles/stylesheet';
+import { Fab } from '../components/Fab';
 
 export const ContadorScreen = () => {
 
-    const [contador, setContador] = useState(0);
+    const [contador, setContador] = useState(10);
 
 
   return (
@@ -13,13 +14,26 @@ export const ContadorScreen = () => {
             Contador: { contador }
         </Text>
 
-        <TouchableOpacity
-            onPress={ () => setContador( contador + 1)}
+        <Fab
+            title="+1"
+            position="br"
+            onPress={ () => setContador( contador + 1) }
+        />
+
+        <Fab
+            title="-1"
+            position="bl"
+            onPress={ () => setContador( contador - 1) }
+        />
+
+        {/* <TouchableOpacity
+            style= { styles.buttonLocationBL }
+            onPress={ () => setContador( contador - 1)}
         >
             <View style={ styles.button }>
-                <Text style={ styles.buttonText }>+1</Text>
+                <Text style={ styles.buttonText }>-1</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
     </View>
   );
